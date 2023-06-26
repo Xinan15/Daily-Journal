@@ -13,7 +13,7 @@ const contactContent =
 
 const app = express();
 
-var posts = [];
+let posts = [];
 
 app.set("view engine", "ejs");
 
@@ -21,8 +21,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-
-  console.log(posts);
 
   res.render("home", {
     homeStartingContent: homeStartingContent, 
