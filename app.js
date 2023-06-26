@@ -30,6 +30,18 @@ app.get("/contact", function (req, res) {
   res.render("contact", {contactContent: contactContent});
 });
 
+app.get("/compose", function (req, res) {
+  res.render("compose");
+});
+
+app.post("/compose", function (req, res) {
+  var publishTitle = req.body.publishTitle;
+  var publishBody = req.body.publishBody;
+  console.log(publishBody)
+  console.log(publishTitle)
+  res.redirect("/compose");
+});
+
 app.listen(3000, function () {
   console.log("Server started on prot 3000");
 });
