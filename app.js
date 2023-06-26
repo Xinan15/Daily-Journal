@@ -13,13 +13,21 @@ const contactContent =
 
 const app = express();
 
+var posts = [];
+
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-  res.render("home", {homeStartingContent: homeStartingContent});
+
+  console.log(posts);
+
+  res.render("home", {
+    homeStartingContent: homeStartingContent, 
+    posts: posts
+  });
 });
 
 app.get("/about", function (req, res) {
@@ -43,8 +51,9 @@ app.post("/compose", function (req, res) {
     title:req.body.publishTitle,
     content:req.body.publishBody
   };
-  console.log(post)
-  res.redirect("/compose");
+
+  posts.push(post);
+  res.redirect("/");
 });
 
 app.listen(3000, function () {
