@@ -35,10 +35,15 @@ app.get("/compose", function (req, res) {
 });
 
 app.post("/compose", function (req, res) {
-  var publishTitle = req.body.publishTitle;
-  var publishBody = req.body.publishBody;
-  console.log(publishBody)
-  console.log(publishTitle)
+  
+  // To create a JavaScript object
+  // try to avoid using 'var'
+  // 'const' can not be changed
+  var post={
+    title:req.body.publishTitle,
+    content:req.body.publishBody
+  };
+  console.log(post)
   res.redirect("/compose");
 });
 
