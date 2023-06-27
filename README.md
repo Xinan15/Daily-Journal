@@ -1,2 +1,2 @@
-# An EJS Challenge
 # Daily Journal
+### An EJS Challenge
