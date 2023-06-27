@@ -24,8 +24,15 @@ const contactContent =
 const app = express();
 
 // To connect to mongodb
+// Do not listen to request until db is connected
 
-mongoose.connect(dbURL);
+mongoose.connect(dbURL)
+
+.then((result)=>app.listen(3000, function () {
+  console.log("Server started on prot 3000 and connected to db");
+}))
+
+.catch((err)=>console.log(err))
 
 let posts = [];
 
@@ -87,6 +94,6 @@ app.get("/posts/:postName", function (req, res) {
   })
 });
 
-app.listen(3000, function () {
-  console.log("Server started on prot 3000");
-});
+// app.listen(3000, function () {
+//   console.log("Server started on prot 3000");
+// });
